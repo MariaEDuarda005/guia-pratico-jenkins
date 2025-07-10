@@ -23,9 +23,10 @@ pipeline {
 
         stage('Deploy no Kubernetes') {
             steps {
-                script {
-                    withKubeConfig([credentialsId: 'kubeconfig']) {
-                        sh 'kubectl get pods'
+                withCredentials([string(credentialsId: 'kubeconfig-content', variable: 'KUBECONFIG_CONTENT')]) {
+                    script {
+                        writeFile file: 'kubeconfig.yaml', text: "${KUBECONFIG_CONTENT}"
+                        sh 'export KUBECONFIG=$(pwd)/kubeconfig.yaml && kubectl get pods'
                     }
                 }
             }
