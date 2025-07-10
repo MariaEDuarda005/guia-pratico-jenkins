@@ -1,0 +1,27 @@
+### .terraform directory ###
+.terraform/
+
+### Terraform lock file ###
+*.tfstate
+*.tfstate.*
+
+### Terraform execution plans ###
+*.tfplan
+
+### Terraform logs ###
+crash.log
+
+### Sensitive variable files ###
+*.tfvars
+*.tfvars.json
+
+### Backup files created by Terraform ###
+*.backup
+
+### Terraform output files ###
+*.out
+
+### Local configuration files ###
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
